@@ -4,16 +4,27 @@ using UnityEngine;
 namespace PROJECT
 {
 	[RequireComponent(typeof(TextMeshProUGUI))]
-	public class TextAdapter : MonoBehaviour, IAdapter
+	public class TextAdapter : ControlAdapter, IAdapter
 	{
+		[ReadOnly]
+		public float shadowOffsetX;
+
 		[Header("Font Settings")]
 		public string fontFamily = "arial";
-		[Header("Cursor Settings")]
-		public CanvasExporterUtils.CursorType cursor;
+		[ReadOnly]
+		protected float alpha;
+		[ReadOnly]
+		protected Color color;
+		[ReadOnly]
+		protected float shadowBlur;
+		[ReadOnly]
+		protected Color shadowColor = new Color(1, 1, 1, 1);
+		[ReadOnly]
+		protected float shadowOffsetY;
 
-		public void UpdateUI()
+		public new void UpdateUI()
 		{
-			Debug.Log("Update not needed");
+			base.UpdateUI();
 		}
 
 		public GameObject GetGameObject()

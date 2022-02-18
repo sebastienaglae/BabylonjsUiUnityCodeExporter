@@ -11,7 +11,8 @@ namespace PROJECT
 		{
 			var myTarget = (RectangleAdapter)target;
 			DrawDefaultInspector();
-			if (GUILayout.Button("Update ui"))
+			GUILayout.Label("Update the visual");
+			if (GUILayout.Button("Update"))
 				myTarget.UpdateUI();
 		}
 	}

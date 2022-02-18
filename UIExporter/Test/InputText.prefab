@@ -621,7 +621,7 @@ GameObject:
   - component: {fileID: 837296019047170719}
   - component: {fileID: 837296019047170718}
   - component: {fileID: 837296019047170717}
-  - component: {fileID: 837296019047170716}
+  - component: {fileID: 7836630541559164215}
   m_Layer: 5
   m_Name: BabylonInputText
   m_TagString: Untagged
@@ -785,7 +785,7 @@ MonoBehaviour:
   m_isRichTextEditingAllowed: 0
   m_LineLimit: 0
   m_InputValidator: {fileID: 0}
---- !u!114 &837296019047170716
+--- !u!114 &7836630541559164215
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -794,18 +794,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 837296019047170690}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b9bd0817876cf142940216b37130c03, type: 3}
+  m_Script: {fileID: 11500000, guid: 33ae16c7ed8885c4fa36dc17f6263f17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   fontFamily: arial
-  borderColorFocused: {r: 1, g: 1, b: 1, a: 0}
+  borderColorFocused: {r: 1, g: 1, b: 1, a: 1}
   borderThickness: 0
-  shadowColor: {r: 1, g: 1, b: 1, a: 0}
+  shadowColor: {r: 1, g: 1, b: 1, a: 1}
   shadowOffset: {x: 0, y: 0}
   shadowBlur: 0
   cursor: 0
   autoStretchWidth: 0
-  maxWidth: 
+  maxWidth: 0px
 --- !u!1 &837296019056970793
 GameObject:
   m_ObjectHideFlags: 0
@@ -1013,82 +1013,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Padding: {x: -8, y: -5, z: -8, w: -5}
   m_Softness: {x: 0, y: 0}
---- !u!1 &837296019094873626
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 837296019094873627}
-  - component: {fileID: 837296019094873621}
-  - component: {fileID: 837296019094873620}
-  m_Layer: 0
-  m_Name: _obj
-  m_TagString: DontRender
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &837296019094873627
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 837296019094873626}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 837296020395340554}
-  m_Father: {fileID: 837296019766624992}
-  m_RootOrder: 14
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 240.00171, y: -405.00006}
-  m_SizeDelta: {x: -1470, y: -1050}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!222 &837296019094873621
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 837296019094873626}
-  m_CullTransparentMesh: 1
---- !u!114 &837296019094873620
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 837296019094873626}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
 --- !u!1 &837296019115036620
 GameObject:
   m_ObjectHideFlags: 0
@@ -2125,7 +2049,7 @@ GameObject:
   - component: {fileID: 837296019444810073}
   - component: {fileID: 837296019444810072}
   - component: {fileID: 837296019444810079}
-  - component: {fileID: 837296019444810078}
+  - component: {fileID: 7160989834263934619}
   m_Layer: 5
   m_Name: BabylonInputText
   m_TagString: Untagged
@@ -2289,7 +2213,7 @@ MonoBehaviour:
   m_isRichTextEditingAllowed: 0
   m_LineLimit: 0
   m_InputValidator: {fileID: 0}
---- !u!114 &837296019444810078
+--- !u!114 &7160989834263934619
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2298,18 +2222,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 837296019444810076}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b9bd0817876cf142940216b37130c03, type: 3}
+  m_Script: {fileID: 11500000, guid: 33ae16c7ed8885c4fa36dc17f6263f17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   fontFamily: arial
-  borderColorFocused: {r: 1, g: 1, b: 1, a: 0}
+  borderColorFocused: {r: 1, g: 1, b: 1, a: 1}
   borderThickness: 0
-  shadowColor: {r: 1, g: 1, b: 1, a: 0}
+  shadowColor: {r: 1, g: 1, b: 1, a: 1}
   shadowOffset: {x: 0, y: 0}
   shadowBlur: 0
   cursor: 5
   autoStretchWidth: 0
-  maxWidth: 
+  maxWidth: 0px
 --- !u!1 &837296019445290708
 GameObject:
   m_ObjectHideFlags: 0
@@ -2322,7 +2246,7 @@ GameObject:
   - component: {fileID: 837296019445290705}
   - component: {fileID: 837296019445290704}
   - component: {fileID: 837296019445290711}
-  - component: {fileID: 837296019445290710}
+  - component: {fileID: 3069466990272765137}
   m_Layer: 5
   m_Name: BabylonInputText
   m_TagString: Untagged
@@ -2486,7 +2410,7 @@ MonoBehaviour:
   m_isRichTextEditingAllowed: 0
   m_LineLimit: 0
   m_InputValidator: {fileID: 0}
---- !u!114 &837296019445290710
+--- !u!114 &3069466990272765137
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2495,18 +2419,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 837296019445290708}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b9bd0817876cf142940216b37130c03, type: 3}
+  m_Script: {fileID: 11500000, guid: 33ae16c7ed8885c4fa36dc17f6263f17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   fontFamily: arial
-  borderColorFocused: {r: 1, g: 1, b: 1, a: 0}
+  borderColorFocused: {r: 1, g: 1, b: 1, a: 1}
   borderThickness: 0
-  shadowColor: {r: 1, g: 0.06774927, b: 0, a: 1}
+  shadowColor: {r: 0, g: 0.39215687, b: 0.5019608, a: 1}
   shadowOffset: {x: 5, y: 5}
   shadowBlur: 0
   cursor: 0
   autoStretchWidth: 0
-  maxWidth: 
+  maxWidth: 0px
 --- !u!1 &837296019511178344
 GameObject:
   m_ObjectHideFlags: 0
@@ -3233,8 +3157,8 @@ RectTransform:
   - {fileID: 837296020496583266}
   - {fileID: 837296019047170691}
   - {fileID: 837296020771592445}
-  - {fileID: 837296019094873627}
   - {fileID: 837296020048550104}
+  - {fileID: 837296020395340554}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3290,13 +3214,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 837296019766624999}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b7c67bb8a005cf8429f341f7eb0ba800, type: 3}
+  m_Script: {fileID: 11500000, guid: a797c1b39b10c5547a9971f7fcc32c47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  borderColor: {r: 1, g: 1, b: 1, a: 0}
+  borderColor: {r: 1, g: 1, b: 1, a: 1}
   borderRadius: 0
   borderThickness: 0
-  shadowColor: {r: 1, g: 1, b: 1, a: 0}
+  shadowColor: {r: 1, g: 1, b: 1, a: 1}
   shadowOffset: {x: 0, y: 0}
   shadowBlur: 0
   cursor: 0
@@ -3470,7 +3394,7 @@ GameObject:
   - component: {fileID: 837296019830479016}
   - component: {fileID: 837296019830479023}
   - component: {fileID: 837296019830479022}
-  - component: {fileID: 837296019830479021}
+  - component: {fileID: 5957897302372909151}
   m_Layer: 5
   m_Name: BabylonInputText
   m_TagString: Untagged
@@ -3634,7 +3558,7 @@ MonoBehaviour:
   m_isRichTextEditingAllowed: 0
   m_LineLimit: 0
   m_InputValidator: {fileID: 0}
---- !u!114 &837296019830479021
+--- !u!114 &5957897302372909151
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3643,18 +3567,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 837296019830478995}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b9bd0817876cf142940216b37130c03, type: 3}
+  m_Script: {fileID: 11500000, guid: 33ae16c7ed8885c4fa36dc17f6263f17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   fontFamily: arial
-  borderColorFocused: {r: 1, g: 1, b: 1, a: 0}
+  borderColorFocused: {r: 1, g: 1, b: 1, a: 1}
   borderThickness: 0
-  shadowColor: {r: 1, g: 1, b: 1, a: 0}
+  shadowColor: {r: 1, g: 1, b: 1, a: 1}
   shadowOffset: {x: 0, y: 0}
   shadowBlur: 0
   cursor: 0
   autoStretchWidth: 0
-  maxWidth: 
+  maxWidth: 0px
 --- !u!1 &837296019865387362
 GameObject:
   m_ObjectHideFlags: 0
@@ -4008,7 +3932,7 @@ GameObject:
   - component: {fileID: 837296019898787878}
   - component: {fileID: 837296019898787877}
   - component: {fileID: 837296019898787876}
-  - component: {fileID: 837296019898787883}
+  - component: {fileID: 1551999300811797847}
   m_Layer: 5
   m_Name: BabylonInputText
   m_TagString: Untagged
@@ -4172,7 +4096,7 @@ MonoBehaviour:
   m_isRichTextEditingAllowed: 0
   m_LineLimit: 0
   m_InputValidator: {fileID: 0}
---- !u!114 &837296019898787883
+--- !u!114 &1551999300811797847
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4181,18 +4105,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 837296019898787881}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b9bd0817876cf142940216b37130c03, type: 3}
+  m_Script: {fileID: 11500000, guid: 33ae16c7ed8885c4fa36dc17f6263f17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   fontFamily: arial
-  borderColorFocused: {r: 1, g: 1, b: 1, a: 0}
+  borderColorFocused: {r: 1, g: 1, b: 1, a: 1}
   borderThickness: 0
-  shadowColor: {r: 0.13216645, g: 0.4433962, b: 0.07738519, a: 1}
-  shadowOffset: {x: -5, y: -5}
+  shadowColor: {r: 0.18624122, g: 0.5, b: 0.12971699, a: 1}
+  shadowOffset: {x: 5, y: 5}
   shadowBlur: 5
   cursor: 0
   autoStretchWidth: 0
-  maxWidth: 
+  maxWidth: 0px
 --- !u!1 &837296019902101457
 GameObject:
   m_ObjectHideFlags: 0
@@ -4802,7 +4726,7 @@ RectTransform:
   m_Children:
   - {fileID: 837296020912418198}
   m_Father: {fileID: 837296019766624992}
-  m_RootOrder: 15
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -4859,7 +4783,7 @@ GameObject:
   - component: {fileID: 837296020088802333}
   - component: {fileID: 837296020088802332}
   - component: {fileID: 837296020088802307}
-  - component: {fileID: 837296020088802306}
+  - component: {fileID: 900020796206138561}
   m_Layer: 5
   m_Name: BabylonInputText
   m_TagString: Untagged
@@ -5023,7 +4947,7 @@ MonoBehaviour:
   m_isRichTextEditingAllowed: 0
   m_LineLimit: 0
   m_InputValidator: {fileID: 0}
---- !u!114 &837296020088802306
+--- !u!114 &900020796206138561
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5032,18 +4956,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 837296020088802304}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b9bd0817876cf142940216b37130c03, type: 3}
+  m_Script: {fileID: 11500000, guid: 33ae16c7ed8885c4fa36dc17f6263f17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   fontFamily: arial
-  borderColorFocused: {r: 1, g: 1, b: 1, a: 0}
+  borderColorFocused: {r: 1, g: 1, b: 1, a: 1}
   borderThickness: 0
-  shadowColor: {r: 1, g: 1, b: 1, a: 0}
+  shadowColor: {r: 1, g: 1, b: 1, a: 1}
   shadowOffset: {x: 0, y: 0}
   shadowBlur: 0
   cursor: 0
   autoStretchWidth: 0
-  maxWidth: 
+  maxWidth: 0px
 --- !u!1 &837296020143801227
 GameObject:
   m_ObjectHideFlags: 0
@@ -5707,7 +5631,7 @@ GameObject:
   - component: {fileID: 837296020395340550}
   - component: {fileID: 837296020395340549}
   - component: {fileID: 837296020395340548}
-  - component: {fileID: 837296020395340555}
+  - component: {fileID: 6286919492957677053}
   m_Layer: 5
   m_Name: BabylonInputText
   m_TagString: Untagged
@@ -5727,13 +5651,13 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 837296019279198096}
-  m_Father: {fileID: 837296019094873627}
-  m_RootOrder: 0
+  m_Father: {fileID: 837296019766624992}
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.00012207031, y: 0}
-  m_SizeDelta: {x: -6, y: -6}
+  m_AnchoredPosition: {x: 240, y: -405.00006}
+  m_SizeDelta: {x: -1470, y: -1050}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &837296020395340550
 CanvasRenderer:
@@ -5871,7 +5795,7 @@ MonoBehaviour:
   m_isRichTextEditingAllowed: 0
   m_LineLimit: 0
   m_InputValidator: {fileID: 0}
---- !u!114 &837296020395340555
+--- !u!114 &6286919492957677053
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5880,18 +5804,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 837296020395340553}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b9bd0817876cf142940216b37130c03, type: 3}
+  m_Script: {fileID: 11500000, guid: 33ae16c7ed8885c4fa36dc17f6263f17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   fontFamily: arial
-  borderColorFocused: {r: 1, g: 0.087065585, b: 0, a: 1}
-  borderThickness: 3
-  shadowColor: {r: 1, g: 1, b: 1, a: 0}
+  borderColorFocused: {r: 1, g: 1, b: 1, a: 1}
+  borderThickness: 5
+  shadowColor: {r: 1, g: 1, b: 1, a: 1}
   shadowOffset: {x: 0, y: 0}
   shadowBlur: 0
   cursor: 0
   autoStretchWidth: 0
-  maxWidth: 
+  maxWidth: 0px
 --- !u!1 &837296020415141173
 GameObject:
   m_ObjectHideFlags: 0
@@ -5985,7 +5909,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 21.45
+  m_fontSize: 26.85
   m_fontSizeBase: 14
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -6193,7 +6117,7 @@ GameObject:
   - component: {fileID: 837296020434855649}
   - component: {fileID: 837296020434855648}
   - component: {fileID: 837296020434855655}
-  - component: {fileID: 837296020434855654}
+  - component: {fileID: 7500184609692467932}
   m_Layer: 5
   m_Name: BabylonInputText
   m_TagString: Untagged
@@ -6357,7 +6281,7 @@ MonoBehaviour:
   m_isRichTextEditingAllowed: 0
   m_LineLimit: 0
   m_InputValidator: {fileID: 0}
---- !u!114 &837296020434855654
+--- !u!114 &7500184609692467932
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -6366,18 +6290,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 837296020434855652}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b9bd0817876cf142940216b37130c03, type: 3}
+  m_Script: {fileID: 11500000, guid: 33ae16c7ed8885c4fa36dc17f6263f17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   fontFamily: arial
-  borderColorFocused: {r: 1, g: 1, b: 1, a: 0}
+  borderColorFocused: {r: 1, g: 1, b: 1, a: 1}
   borderThickness: 0
-  shadowColor: {r: 1, g: 1, b: 1, a: 0}
+  shadowColor: {r: 1, g: 1, b: 1, a: 1}
   shadowOffset: {x: 0, y: 0}
   shadowBlur: 0
   cursor: 0
   autoStretchWidth: 0
-  maxWidth: 
+  maxWidth: 0px
 --- !u!1 &837296020475266465
 GameObject:
   m_ObjectHideFlags: 0
@@ -6524,7 +6448,7 @@ GameObject:
   - component: {fileID: 837296020496583294}
   - component: {fileID: 837296020496583293}
   - component: {fileID: 837296020496583292}
-  - component: {fileID: 837296020496583267}
+  - component: {fileID: 4971974979545089219}
   m_Layer: 5
   m_Name: BabylonInputText
   m_TagString: Untagged
@@ -6688,7 +6612,7 @@ MonoBehaviour:
   m_isRichTextEditingAllowed: 0
   m_LineLimit: 0
   m_InputValidator: {fileID: 0}
---- !u!114 &837296020496583267
+--- !u!114 &4971974979545089219
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -6697,18 +6621,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 837296020496583265}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b9bd0817876cf142940216b37130c03, type: 3}
+  m_Script: {fileID: 11500000, guid: 33ae16c7ed8885c4fa36dc17f6263f17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   fontFamily: arial
-  borderColorFocused: {r: 1, g: 1, b: 1, a: 0}
+  borderColorFocused: {r: 1, g: 1, b: 1, a: 1}
   borderThickness: 0
-  shadowColor: {r: 1, g: 1, b: 1, a: 0}
+  shadowColor: {r: 1, g: 1, b: 1, a: 1}
   shadowOffset: {x: 0, y: 0}
   shadowBlur: 0
   cursor: 0
-  autoStretchWidth: 1
-  maxWidth: 100px
+  autoStretchWidth: 0
+  maxWidth: 1000px
 --- !u!1 &837296020549736680
 GameObject:
   m_ObjectHideFlags: 0
@@ -6721,7 +6645,7 @@ GameObject:
   - component: {fileID: 837296020549736677}
   - component: {fileID: 837296020549736676}
   - component: {fileID: 837296020549736683}
-  - component: {fileID: 837296020549736682}
+  - component: {fileID: 5742796101187732695}
   m_Layer: 5
   m_Name: BabylonInputText
   m_TagString: Untagged
@@ -6885,7 +6809,7 @@ MonoBehaviour:
   m_isRichTextEditingAllowed: 0
   m_LineLimit: 0
   m_InputValidator: {fileID: 0}
---- !u!114 &837296020549736682
+--- !u!114 &5742796101187732695
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -6894,18 +6818,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 837296020549736680}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b9bd0817876cf142940216b37130c03, type: 3}
+  m_Script: {fileID: 11500000, guid: 33ae16c7ed8885c4fa36dc17f6263f17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   fontFamily: arial
-  borderColorFocused: {r: 1, g: 1, b: 1, a: 0}
+  borderColorFocused: {r: 1, g: 1, b: 1, a: 1}
   borderThickness: 0
-  shadowColor: {r: 1, g: 1, b: 1, a: 0}
+  shadowColor: {r: 1, g: 1, b: 1, a: 1}
   shadowOffset: {x: 0, y: 0}
   shadowBlur: 0
   cursor: 0
   autoStretchWidth: 0
-  maxWidth: 
+  maxWidth: 0px
 --- !u!1 &837296020551047488
 GameObject:
   m_ObjectHideFlags: 0
@@ -7466,7 +7390,7 @@ GameObject:
   - component: {fileID: 837296020657612890}
   - component: {fileID: 837296020657612889}
   - component: {fileID: 837296020657612888}
-  - component: {fileID: 837296020657612895}
+  - component: {fileID: 7225827421414233756}
   m_Layer: 5
   m_Name: BabylonInputText
   m_TagString: Untagged
@@ -7630,7 +7554,7 @@ MonoBehaviour:
   m_isRichTextEditingAllowed: 0
   m_LineLimit: 0
   m_InputValidator: {fileID: 0}
---- !u!114 &837296020657612895
+--- !u!114 &7225827421414233756
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -7639,18 +7563,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 837296020657612893}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b9bd0817876cf142940216b37130c03, type: 3}
+  m_Script: {fileID: 11500000, guid: 33ae16c7ed8885c4fa36dc17f6263f17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   fontFamily: arial
-  borderColorFocused: {r: 1, g: 1, b: 1, a: 0}
+  borderColorFocused: {r: 1, g: 1, b: 1, a: 1}
   borderThickness: 0
-  shadowColor: {r: 1, g: 1, b: 1, a: 0}
+  shadowColor: {r: 1, g: 1, b: 1, a: 1}
   shadowOffset: {x: 0, y: 0}
   shadowBlur: 0
   cursor: 0
   autoStretchWidth: 0
-  maxWidth: 
+  maxWidth: 0px
 --- !u!1 &837296020693700921
 GameObject:
   m_ObjectHideFlags: 0
@@ -7663,7 +7587,7 @@ GameObject:
   - component: {fileID: 837296020693700918}
   - component: {fileID: 837296020693700917}
   - component: {fileID: 837296020693700916}
-  - component: {fileID: 837296020693700923}
+  - component: {fileID: 4795293245427006455}
   m_Layer: 5
   m_Name: BabylonInputText
   m_TagString: Untagged
@@ -7827,7 +7751,7 @@ MonoBehaviour:
   m_isRichTextEditingAllowed: 0
   m_LineLimit: 0
   m_InputValidator: {fileID: 0}
---- !u!114 &837296020693700923
+--- !u!114 &4795293245427006455
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -7836,18 +7760,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 837296020693700921}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b9bd0817876cf142940216b37130c03, type: 3}
+  m_Script: {fileID: 11500000, guid: 33ae16c7ed8885c4fa36dc17f6263f17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   fontFamily: arial
-  borderColorFocused: {r: 1, g: 1, b: 1, a: 0}
+  borderColorFocused: {r: 1, g: 1, b: 1, a: 1}
   borderThickness: 0
-  shadowColor: {r: 1, g: 1, b: 1, a: 0}
+  shadowColor: {r: 1, g: 1, b: 1, a: 1}
   shadowOffset: {x: 0, y: 0}
   shadowBlur: 0
   cursor: 0
   autoStretchWidth: 0
-  maxWidth: 
+  maxWidth: 0px
 --- !u!1 &837296020697027575
 GameObject:
   m_ObjectHideFlags: 0
@@ -7860,7 +7784,7 @@ GameObject:
   - component: {fileID: 837296020697027468}
   - component: {fileID: 837296020697027571}
   - component: {fileID: 837296020697027570}
-  - component: {fileID: 837296020697027569}
+  - component: {fileID: 7236513436657088594}
   m_Layer: 5
   m_Name: BabylonInputText
   m_TagString: Untagged
@@ -8024,7 +7948,7 @@ MonoBehaviour:
   m_isRichTextEditingAllowed: 0
   m_LineLimit: 0
   m_InputValidator: {fileID: 0}
---- !u!114 &837296020697027569
+--- !u!114 &7236513436657088594
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8033,18 +7957,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 837296020697027575}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b9bd0817876cf142940216b37130c03, type: 3}
+  m_Script: {fileID: 11500000, guid: 33ae16c7ed8885c4fa36dc17f6263f17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   fontFamily: arial
-  borderColorFocused: {r: 1, g: 1, b: 1, a: 0}
+  borderColorFocused: {r: 1, g: 1, b: 1, a: 1}
   borderThickness: 0
-  shadowColor: {r: 1, g: 1, b: 1, a: 0}
+  shadowColor: {r: 1, g: 1, b: 1, a: 1}
   shadowOffset: {x: 0, y: 0}
   shadowBlur: 0
   cursor: 0
   autoStretchWidth: 0
-  maxWidth: 
+  maxWidth: 0px
 --- !u!1 &837296020731548913
 GameObject:
   m_ObjectHideFlags: 0
@@ -8109,7 +8033,7 @@ GameObject:
   - component: {fileID: 837296020771592441}
   - component: {fileID: 837296020771592440}
   - component: {fileID: 837296020771592447}
-  - component: {fileID: 837296020771592446}
+  - component: {fileID: 6115423005967893206}
   m_Layer: 5
   m_Name: BabylonInputText
   m_TagString: Untagged
@@ -8273,7 +8197,7 @@ MonoBehaviour:
   m_isRichTextEditingAllowed: 0
   m_LineLimit: 0
   m_InputValidator: {fileID: 0}
---- !u!114 &837296020771592446
+--- !u!114 &6115423005967893206
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8282,18 +8206,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 837296020771592444}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b9bd0817876cf142940216b37130c03, type: 3}
+  m_Script: {fileID: 11500000, guid: 33ae16c7ed8885c4fa36dc17f6263f17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   fontFamily: arial
-  borderColorFocused: {r: 1, g: 1, b: 1, a: 0}
+  borderColorFocused: {r: 1, g: 1, b: 1, a: 1}
   borderThickness: 0
-  shadowColor: {r: 1, g: 1, b: 1, a: 0}
+  shadowColor: {r: 1, g: 1, b: 1, a: 1}
   shadowOffset: {x: 0, y: 0}
   shadowBlur: 0
   cursor: 0
   autoStretchWidth: 0
-  maxWidth: 
+  maxWidth: 0px
 --- !u!1 &837296020801521310
 GameObject:
   m_ObjectHideFlags: 0
@@ -8306,7 +8230,7 @@ GameObject:
   - component: {fileID: 837296020801521307}
   - component: {fileID: 837296020801521306}
   - component: {fileID: 837296020801521305}
-  - component: {fileID: 837296020801521304}
+  - component: {fileID: 4722602139259401748}
   m_Layer: 5
   m_Name: BabylonInputText
   m_TagString: Untagged
@@ -8470,7 +8394,7 @@ MonoBehaviour:
   m_isRichTextEditingAllowed: 0
   m_LineLimit: 0
   m_InputValidator: {fileID: 0}
---- !u!114 &837296020801521304
+--- !u!114 &4722602139259401748
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8479,18 +8403,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 837296020801521310}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b9bd0817876cf142940216b37130c03, type: 3}
+  m_Script: {fileID: 11500000, guid: 33ae16c7ed8885c4fa36dc17f6263f17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   fontFamily: arial
-  borderColorFocused: {r: 1, g: 1, b: 1, a: 0}
+  borderColorFocused: {r: 1, g: 1, b: 1, a: 1}
   borderThickness: 0
-  shadowColor: {r: 1, g: 1, b: 1, a: 0}
+  shadowColor: {r: 1, g: 1, b: 1, a: 1}
   shadowOffset: {x: 0, y: 0}
   shadowBlur: 0
   cursor: 9
   autoStretchWidth: 0
-  maxWidth: 
+  maxWidth: 0px
 --- !u!1 &837296020874050998
 GameObject:
   m_ObjectHideFlags: 0
@@ -8637,7 +8561,7 @@ GameObject:
   - component: {fileID: 837296020912418194}
   - component: {fileID: 837296020912418193}
   - component: {fileID: 837296020912418192}
-  - component: {fileID: 837296020912418199}
+  - component: {fileID: 254014951040545428}
   m_Layer: 5
   m_Name: BabylonInputText
   m_TagString: Untagged
@@ -8801,7 +8725,7 @@ MonoBehaviour:
   m_isRichTextEditingAllowed: 0
   m_LineLimit: 0
   m_InputValidator: {fileID: 0}
---- !u!114 &837296020912418199
+--- !u!114 &254014951040545428
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8810,18 +8734,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 837296020912418197}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b9bd0817876cf142940216b37130c03, type: 3}
+  m_Script: {fileID: 11500000, guid: 33ae16c7ed8885c4fa36dc17f6263f17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   fontFamily: arial
-  borderColorFocused: {r: 1, g: 0.3726415, b: 0.3726415, a: 1}
-  borderThickness: 2
-  shadowColor: {r: 1, g: 1, b: 1, a: 0}
+  borderColorFocused: {r: 1, g: 0, b: 0, a: 1}
+  borderThickness: 5
+  shadowColor: {r: 1, g: 1, b: 1, a: 1}
   shadowOffset: {x: 0, y: 0}
   shadowBlur: 0
   cursor: 0
   autoStretchWidth: 1
-  maxWidth: 
+  maxWidth: 0px
 --- !u!1 &837296020968128257
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,28 +1,12 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using TMPro;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
 namespace PROJECT
 {
 	public static class CanvasExporterUtils
 	{
-		public enum BabylonHorizontalAlignment
-		{
-			HORIZONTAL_ALIGNMENT_CENTER,
-			HORIZONTAL_ALIGNMENT_LEFT,
-			HORIZONTAL_ALIGNMENT_RIGHT
-		}
-
-		public enum BabylonVerticalAlignment
-		{
-			VERTICAL_ALIGNMENT_CENTER,
-			VERTICAL_ALIGNMENT_BOTTOM,
-			VERTICAL_ALIGNMENT_TOP
-		}
-
 		public enum AlignmentHorizontal
 		{
 			STRETCH = 1000,
@@ -39,25 +23,52 @@ namespace PROJECT
 			TOP = 100
 		}
 
+		public enum BabylonHorizontalAlignment
+		{
+			HORIZONTAL_ALIGNMENT_CENTER,
+			HORIZONTAL_ALIGNMENT_LEFT,
+			HORIZONTAL_ALIGNMENT_RIGHT
+		}
+
+		public enum BabylonVerticalAlignment
+		{
+			VERTICAL_ALIGNMENT_CENTER,
+			VERTICAL_ALIGNMENT_BOTTOM,
+			VERTICAL_ALIGNMENT_TOP
+		}
+
 		public enum Control
 		{
 			NONE,
+			CONTAINER,
 			RECTANGLE,
-			INPUT_TEXT,
-			TEXT,
+			BUTTON,
+			SELECTION_PANEL,
+			SCROLLVIEWER,
+			TOGGLE_BUTTON,
+			STACK_PANEL,
+			VIRTUAL_KEYBOARD,
+			GRID,
+			ELLIPSE,
+			TEXT_BLOCK,
 			IMAGE,
-			SCROLL_VIEW
+			CHECKBOX,
+			INPUT_TEXT,
+			COLOR_PICKER,
+			LINE,
+			MULTILINE,
+			RADIO_BUTTON,
+			BASE_SLIDER,
+			SLIDER,
+			SCROLLBAR,
+			IMAGE_SCROLLBAR,
+			IMAGE_BASED_SLIDER,
+			DISPLAY_GRID
 		}
 
 		public static bool isEmptyNullWhiteSpace(string value)
 		{
-			while (value.Contains("\u200B"))
-				value = value.Replace("\u200B", "");
-
-			if (string.IsNullOrWhiteSpace(value))
-				return true;
-
-			return false;
+			return value.Contains("\u200B") || string.IsNullOrWhiteSpace(value);
 		}
 
 		public static void GenerateCreateUi(string uiName, ref string n)
@@ -139,6 +150,72 @@ namespace PROJECT
 			return str.Replace("\n", "\\n");
 		}
 
+		public static int GetHierarchicalLevel(GameObject gameObject)
+		{
+			if (gameObject.transform.parent.GetComponent<Canvas>())
+				return 0;
+
+			var actualTransform = gameObject.transform.parent;
+			var level = 0;
+			while (actualTransform.GetComponent<Canvas>() == null)
+			{
+				actualTransform = actualTransform.parent;
+				level++;
+			}
+
+			return level;
+		}
+
+		public static Dictionary<GameObject, int> CreateHierarchicalStructure(Canvas canvas)
+		{
+			var dictionary = new Dictionary<GameObject, int>();
+			var parents = new List<GameObject>
+			{
+				canvas.gameObject
+			};
+
+			var p = 0;
+			var id = 0;
+			while (parents.Count != 0)
+			{
+				var clone = parents.ToArray();
+				parents.Clear();
+				for (var i = 0; i < clone.Length; i++)
+				{
+					for (var j = 0; j < clone[i].transform.childCount; j++)
+					{
+						var child = clone[i].transform.GetChild(j);
+						dictionary.Add(child.gameObject, id);
+						parents.Add(child.gameObject);
+						id++;
+					}
+				}
+				p++;
+			}
+
+			return dictionary;
+		}
+
+		public static string GetUniqueNonNumberId()
+		{
+			var dic = "ABCDEFGHIJ";
+			var uuid = Guid.NewGuid().ToString();
+			var newUuid = "";
+			foreach (var t in uuid)
+			{
+				var isNumeric = int.TryParse(t.ToString(), out var result);
+				if (isNumeric)
+					newUuid += dic[result];
+				else
+					newUuid += t;
+			}
+
+			while (newUuid.Contains("-"))
+				newUuid = newUuid.Replace("-", "");
+
+			return newUuid;
+		}
+
 		public static (AlignmentHorizontal horizontal, AlignmentVertical vertical) GetAlignment(RectTransform rectTransform)
 		{
 			AlignmentHorizontal horizontal;
@@ -167,46 +244,6 @@ namespace PROJECT
 				horizontal = AlignmentHorizontal.STRETCH;
 			}
 			return (horizontal, vertical);
-		}
-
-		public enum CursorType
-		{
-			AUTO,
-			DEFAULT,
-			NONE,
-			CONTEXT_MENU,
-			HELP,
-			POINTER,
-			PROGRESS,
-			WAIT,
-			CELL,
-			CROSSHAIR,
-			TEXT,
-			VERTICAL_TEXT,
-			ALIAS,
-			COPY,
-			MOVE,
-			NO_DROP,
-			GRAB,
-			GRABBING,
-			NOT_ALLOWED,
-			ALL_SCROLL,
-			COL_RESIZE,
-			ROW_RESIZE,
-			N_RESIZE,
-			E_RESIZE,
-			S_RESIZE,
-			W_RESIZE,
-			NE_RESIZE,
-			NW_RESIZE,
-			SE_RESIZE,
-			SW_RESIZE,
-			EW_RESIZE,
-			NS_RESIZE,
-			NESW_RESIZE,
-			NWSE_RESIZE,
-			ZOOM_IN,
-			ZOOM_OUT
 		}
 	}
 }

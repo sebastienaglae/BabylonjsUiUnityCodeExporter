@@ -9,7 +9,7 @@ namespace PROJECT
 		private readonly Image image;
 		private readonly ImageAdapter imageAdapter;
 
-		public BabylonImage(string uiName, GameObject gameObject, string varName, Canvas canvas) : base(uiName, gameObject, varName, canvas)
+		public BabylonImage(string uiName, GameObject gameObject, string varName, int zIndex, Canvas canvas) : base(uiName, gameObject, varName, zIndex, canvas)
 		{
 			image = gameObject.GetComponent<Image>();
 			imageAdapter = gameObject.GetComponent<ImageAdapter>();
@@ -19,73 +19,13 @@ namespace PROJECT
 		{
 			imageAdapter.UpdateUI();
 			GenerateControl(ref n);
-			
-			CanvasExporterUtils.GenerateAlpha(varName, image.color, ref n);
+
 			GenerateDefault(ref n);
-			GenerateShadow(ref n);
-			GenerateCursor(ref n);
 			GenerateSlice(ref n);
 			GeneratePreserveAspect(ref n);
+			GenerateDetectPointerOnOpaqueOnly(ref n);
 
-			CanvasExporterUtils.GenerateAddControl(varName, uiName, ref n);
-		}
-
-		private void GenerateControl(ref string n)
-		{
-			var srcImg = "";
-			if (image.sprite != null)
-				srcImg = AssetDatabase.GetAssetPath(image.sprite.texture);
-			else if (!CanvasExporterUtils.isEmptyNullWhiteSpace(imageAdapter.urlImage))
-				srcImg = imageAdapter.urlImage;
-			n += $"var {varName} = new BABYLON.GUI.Image(\"{gameObject.name}\", \"{srcImg}\");\n";
-		}
-
-		private void GenerateSlice(ref string n)
-		{
-			if (image.sprite != null)
-			{
-				if (image.type != Image.Type.Sliced) return;
-				BabylonUtils.CreateCodeProperty(varName, "populateNinePatchSlicesFromImage", true, ref n);
-				BabylonUtils.CreateCodeProperty(varName, "stretch", "BABYLON.GUI.Image.STRETCH_NINE_PATCH", false, ref n);
-			}
-			else
-			{
-				if (!imageAdapter.isSlicedUrl) return;
-				BabylonUtils.CreateCodeProperty(varName, "populateNinePatchSlicesFromImage", true, ref n);
-				BabylonUtils.CreateCodeProperty(varName, "stretch", "BABYLON.GUI.Image.STRETCH_NINE_PATCH", false, ref n);
-			}
-		}
-
-		private void GeneratePreserveAspect(ref string n)
-		{
-			if (image.sprite != null)
-			{
-				if (image.preserveAspect) return;
-				BabylonUtils.CreateCodeProperty(varName, "stretch", "BABYLON.GUI.Image.STRETCH_UNIFORM", false, ref n);
-			}
-			else
-			{
-				if (!imageAdapter.preserveAspectUrl) return;
-				BabylonUtils.CreateCodeProperty(varName, "stretch", "BABYLON.GUI.Image.STRETCH_UNIFORM", false, ref n);
-			}
-		}
-
-
-		private void GenerateShadow(ref string n)
-		{
-			var color = imageAdapter.shadowColor;
-			var shadowOffsetX = imageAdapter.shadowOffset.x;
-			var shadowOffsetY = -imageAdapter.shadowOffset.y;
-			var shadowBlur = imageAdapter.shadowBlur;
-			BabylonUtils.CreateCodeProperty(varName, "shadowColor", color, ref n);
-			BabylonUtils.CreateCodeProperty(varName, "shadowOffsetX", shadowOffsetX, ref n);
-			BabylonUtils.CreateCodeProperty(varName, "shadowOffsetY", shadowOffsetY, ref n);
-			BabylonUtils.CreateCodeProperty(varName, "shadowBlur", shadowBlur, ref n);
-		}
-
-		private void GenerateCursor(ref string n)
-		{
-			BabylonUtils.CreateCodeProperty(varName, "hoverCursor", imageAdapter.cursor, ref n);
+			GenerateAddControl(ref n);
 		}
 
 		public CanvasExporterUtils.Control GetControl()
@@ -96,6 +36,57 @@ namespace PROJECT
 		public GameObject GetGameObject()
 		{
 			return gameObject;
+		}
+
+		private void GenerateControl(ref string n)
+		{
+			var srcImg = "";
+			if (image.sprite != null)
+			{
+				srcImg = AssetDatabase.GetAssetPath(image.sprite.texture);
+				if (CanvasExporterUtils.isEmptyNullWhiteSpace(srcImg))
+					srcImg = imageAdapter.sourceUrl;
+			}
+			else if (!CanvasExporterUtils.isEmptyNullWhiteSpace(imageAdapter.sourceUrl))
+			{
+				srcImg = imageAdapter.sourceUrl;
+			}
+			n += $"var {varName} = new BABYLON.GUI.Image(\"{gameObject.name}\", \"{srcImg}\");\n";
+		}
+
+		protected override void GenerateAlpha(ref string n)
+		{
+			BabylonUtils.CreateCodeProperty(varName, "alpha", image.color.a, ref n);
+		}
+
+		protected virtual void GenerateSlice(ref string n)
+		{
+			if (image.sprite != null)
+			{
+				if (image.type != Image.Type.Sliced) return;
+				BabylonUtils.CreateCodeProperty(varName, "populateNinePatchSlicesFromImage", true, ref n);
+				BabylonUtils.CreateCodeProperty(varName, "stretch", "BABYLON.GUI.Image.STRETCH_NINE_PATCH", false, ref n);
+			}
+			else
+			{
+				if (!imageAdapter.populateNinePatchSlicesFromImage) return;
+				BabylonUtils.CreateCodeProperty(varName, "populateNinePatchSlicesFromImage", true, ref n);
+				BabylonUtils.CreateCodeProperty(varName, "stretch", "BABYLON.GUI.Image.STRETCH_NINE_PATCH", false, ref n);
+			}
+		}
+
+		protected virtual void GenerateDetectPointerOnOpaqueOnly(ref string n)
+		{
+			BabylonUtils.CreateCodeProperty(varName, "detectPointerOnOpaqueOnly", imageAdapter.detectPointerOnOpaqueOnly, ref n);
+		}
+
+		protected virtual void GeneratePreserveAspect(ref string n)
+		{
+			if (image.type != Image.Type.Simple) return;
+			if (image.preserveAspect)
+				BabylonUtils.CreateCodeProperty(varName, "stretch", "BABYLON.GUI.Image.STRETCH_UNIFORM", false, ref n);
+			else
+				BabylonUtils.CreateCodeProperty(varName, "stretch", "BABYLON.GUI.Image.STRETCH_NONE", false, ref n);
 		}
 	}
 }

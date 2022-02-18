@@ -6,12 +6,15 @@ namespace PROJECT
 	{
 		public bool CanParse(GameObject gameObject)
 		{
-			return gameObject.GetComponent<TextAdapter>() != null;
+			var textAdapter = gameObject.GetComponent<TextAdapter>();
+			if (textAdapter == null) return false;
+			return !textAdapter.GetType().IsSubclassOf(typeof(TextAdapter));
 		}
 
-		public BabylonUI Parse(string uiName, GameObject gameObject, string varName, Canvas canvas)
+		public BabylonUI Parse(string uiName, GameObject gameObject, string varName,int zIndex, Canvas canvas)
 		{
-			return new BabylonText(uiName, gameObject, varName, canvas);
+			return new BabylonText(uiName, gameObject, varName,  zIndex, canvas);
 		}
 	}
+
 }

@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace PROJECT
 {
+	
 	[CustomEditor(typeof(CanvasExporter))]
 	public class CanvasExporterEditor : Editor
 	{
@@ -12,9 +13,10 @@ namespace PROJECT
 			DrawDefaultInspector();
 			if (GUILayout.Button("Update ui"))
 				myTarget.GetUiElement();
-			if (GUILayout.Button("Generate ui"))
-				if (myTarget.GetUiElement())
-					myTarget.GenerateUi();
+			if (!GUILayout.Button("Generate ui")) return;
+			if (myTarget.GetUiElement())
+				myTarget.GenerateUi();
 		}
 	}
+
 }

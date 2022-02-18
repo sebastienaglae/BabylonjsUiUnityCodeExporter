@@ -1,22 +1,33 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace PROJECT
 {
-    public class ContainerAdapter : MonoBehaviour, IAdapter
-    {
-        [ReadOnly]
-        public IAdapter parent;
-        
-        public void UpdateUI()
-        {
-            parent = CanvasExporterUtils.GetParent(gameObject);
-        }
+	[RequireComponent(typeof(Image))]
+	[RequireComponent(typeof(RectTransform))]
+	public class ContainerAdapter : ControlAdapter, IAdapter
+	{
+		[Header("Children Settings")]
+		[Tooltip("Gets or sets a boolean indicating if the container should try to adapt to its children height")]
+		public bool adaptHeightToChildren;
+		[Tooltip("Gets or sets a boolean indicating if the container should try to adapt to its children width")]
+		public bool adaptWidthToChildren;
+		[ReadOnly]
+		protected new float alpha;
 
-        public GameObject GetGameObject()
-        {
-            return gameObject;
-        }
-    }
+		[ReadOnly]
+		protected Color background = new Color(1, 1, 1, 1);
+
+		public new void UpdateUI()
+		{
+			base.UpdateUI();
+			var imageComponent = GetComponent<Image>();
+			imageComponent.sprite = null;
+		}
+
+		public GameObject GetGameObject()
+		{
+			return gameObject;
+		}
+	}
 }

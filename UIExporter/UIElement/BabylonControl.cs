@@ -4,53 +4,164 @@ namespace PROJECT
 {
 	public abstract class BabylonControl
 	{
+		public enum CursorType
+		{
+			AUTO,
+			DEFAULT,
+			NONE,
+			CONTEXT_MENU,
+			HELP,
+			POINTER,
+			PROGRESS,
+			WAIT,
+			CELL,
+			CROSSHAIR,
+			TEXT,
+			VERTICAL_TEXT,
+			ALIAS,
+			COPY,
+			MOVE,
+			NO_DROP,
+			GRAB,
+			GRABBING,
+			NOT_ALLOWED,
+			ALL_SCROLL,
+			COL_RESIZE,
+			ROW_RESIZE,
+			N_RESIZE,
+			E_RESIZE,
+			S_RESIZE,
+			W_RESIZE,
+			NE_RESIZE,
+			NW_RESIZE,
+			SE_RESIZE,
+			SW_RESIZE,
+			EW_RESIZE,
+			NS_RESIZE,
+			NESW_RESIZE,
+			NWSE_RESIZE,
+			ZOOM_IN,
+			ZOOM_OUT
+		}
+
 		protected readonly Canvas canvas;
+		protected readonly ControlAdapter controlAdapter;
 		protected readonly GameObject gameObject;
+		protected readonly RectTransform rectTransform;
 		protected readonly string uiName;
+		protected readonly int zIndex;
 		protected readonly string varName;
 
-		protected BabylonControl(string uiName, GameObject gameObject, string varName, Canvas canvas)
+		protected BabylonControl(string uiName, GameObject gameObject, string varName, int zIndex, Canvas canvas)
 		{
 			this.uiName = uiName;
 			this.gameObject = gameObject;
 			this.varName = varName;
+			this.zIndex = zIndex;
 			this.canvas = canvas;
+			rectTransform = gameObject.GetComponent<RectTransform>();
+			controlAdapter = gameObject.GetComponent<ControlAdapter>();
 		}
 
-		protected void GenerateDefault(ref string n)
+		protected virtual void GenerateDefault(ref string n)
 		{
-			//CanvasExporterUtils.GenerateAlpha(varName, image.color, ref n);
+			var (horizontal, vertical) = CanvasExporterUtils.GetAlignment(gameObject.GetComponent<RectTransform>());
 			GenerateIsVisible(ref n);
-			GeneratePlacement(ref n);
+			GenerateSize(horizontal, vertical, ref n);
+			GeneratePosition(horizontal, vertical, ref n);
 			GenerateRotation(ref n);
+			GenerateScale(ref n);
+			GenerateIsFocusInvisible(ref n);
+			GenerateAlpha(ref n);
+			GenerateColor(ref n);
+			GenerateDisable(ref n);
+			GenerateHighlight(ref n);
+			GenerateLinkOffset(ref n);
+			GeneratePadding(ref n);
+			GenerateZIndex(ref n);
+			GenerateShadow(ref n);
+			GenerateHoverCursor(ref n);
 		}
 
-		private void GenerateIsVisible(ref string n)
+		protected virtual void GenerateAddControl(ref string n)
+		{
+			BabylonUtils.CreateCodeMethod(uiName, "addControl", varName, ref n);
+		}
+
+		protected virtual void GenerateIsVisible(ref string n)
 		{
 			BabylonUtils.CreateCodeProperty(varName, "isVisible", gameObject.activeInHierarchy, ref n);
 		}
 
-		private void GenerateRotation(ref string n)
+		protected virtual void GenerateIsFocusInvisible(ref string n)
+		{
+			BabylonUtils.CreateCodeProperty(varName, "isFocusInvisible", controlAdapter.isFocusInvisible, ref n);
+		}
+
+		protected virtual void GenerateAlpha(ref string n)
+		{
+			BabylonUtils.CreateCodeProperty(varName, "alpha", controlAdapter.alpha, ref n);
+		}
+
+		protected virtual void GenerateColor(ref string n)
+		{
+			BabylonUtils.CreateCodeProperty(varName, "color", controlAdapter.color, ref n);
+		}
+
+		protected virtual void GenerateDisable(ref string n)
+		{
+			BabylonUtils.CreateCodeProperty(varName, "disabledColor", controlAdapter.disabledColor, ref n);
+			BabylonUtils.CreateCodeProperty(varName, "disabledColorItem", controlAdapter.disabledColorItem, ref n);
+		}
+
+		protected virtual void GenerateHighlight(ref string n)
+		{
+			BabylonUtils.CreateCodeProperty(varName, "highlightColor", controlAdapter.highlightColor, ref n);
+			BabylonUtils.CreateCodeProperty(varName, "highlightLineWidth", controlAdapter.highlightLineWidth, ref n);
+			BabylonUtils.CreateCodeProperty(varName, "isHighlighted", controlAdapter.isHighlighted, ref n);
+		}
+
+		protected virtual void GenerateLinkOffset(ref string n)
+		{
+			BabylonUtils.CreateCodeProperty(varName, "linkOffsetX", controlAdapter.linkOffsetX, ref n);
+			BabylonUtils.CreateCodeProperty(varName, "linkOffsetY", controlAdapter.linkOffsetY, ref n);
+		}
+
+		protected virtual void GeneratePadding(ref string n)
+		{
+			BabylonUtils.CreateCodeProperty(varName, "paddingBottom", controlAdapter.paddingBottom, ref n);
+			BabylonUtils.CreateCodeProperty(varName, "paddingLeft", controlAdapter.paddingLeft, ref n);
+			BabylonUtils.CreateCodeProperty(varName, "paddingRight", controlAdapter.paddingRight, ref n);
+			BabylonUtils.CreateCodeProperty(varName, "paddingTop", controlAdapter.paddingTop, ref n);
+		}
+
+		protected virtual void GenerateZIndex(ref string n)
+		{
+			BabylonUtils.CreateCodeProperty(varName, "zIndex", zIndex, ref n);
+		}
+
+		protected virtual void GenerateShadow(ref string n)
+		{
+			BabylonUtils.CreateCodeProperty(varName, "shadowBlur", controlAdapter.shadowBlur, ref n);
+			BabylonUtils.CreateCodeProperty(varName, "shadowColor", controlAdapter.shadowColor, ref n);
+			BabylonUtils.CreateCodeProperty(varName, "shadowOffsetX", -controlAdapter.shadowOffsetX, ref n);
+			BabylonUtils.CreateCodeProperty(varName, "shadowOffsetY", controlAdapter.shadowOffsetY, ref n);
+		}
+
+		protected virtual void GenerateRotation(ref string n)
 		{
 			var val = gameObject.GetComponent<RectTransform>().rotation.eulerAngles.z * Mathf.Deg2Rad;
 
 			BabylonUtils.CreateCodeProperty(varName, "rotation", -val, ref n);
 		}
 
-		private void GeneratePlacement(ref string n)
-		{
-			var (horizontal, vertical) = CanvasExporterUtils.GetAlignment(gameObject.GetComponent<RectTransform>());
-			GenerateSize(varName, gameObject, canvas, horizontal, vertical, ref n);
-			GeneratePosition(varName, gameObject, canvas, horizontal, vertical, ref n);
-		}
-
-		private static void GenerateSize(string varName, GameObject u, Canvas canvas, CanvasExporterUtils.AlignmentHorizontal horizontal, CanvasExporterUtils.AlignmentVertical vertical, ref string n)
+		protected virtual void GenerateSize(CanvasExporterUtils.AlignmentHorizontal horizontal, CanvasExporterUtils.AlignmentVertical vertical, ref string n)
 		{
 			float valw;
 			float valh;
-			var target = u.GetComponent<RectTransform>();
-			if (u.transform.parent.CompareTag("DontRender"))
-				target = u.transform.parent.GetComponent<RectTransform>();
+			var target = rectTransform;
+			if (gameObject.transform.parent.CompareTag("DontRender"))
+				target = gameObject.transform.parent.GetComponent<RectTransform>();
 
 			if (horizontal == CanvasExporterUtils.AlignmentHorizontal.STRETCH)
 			{
@@ -75,31 +186,23 @@ namespace PROJECT
 			}
 		}
 
-		private static void GeneratePosition(string varName, GameObject u, Canvas canvas, CanvasExporterUtils.AlignmentHorizontal horizontal, CanvasExporterUtils.AlignmentVertical vertical, ref string n)
+		protected virtual void GenerateScale(ref string n)
+		{
+			BabylonUtils.CreateCodeProperty(varName, "scaleX", rectTransform.localScale.x, ref n);
+			BabylonUtils.CreateCodeProperty(varName, "scaleY", rectTransform.localScale.y, ref n);
+		}
+
+		protected virtual void GenerateHoverCursor(ref string n)
+		{
+			BabylonUtils.CreateCodeProperty(varName, "hoverCursor", controlAdapter.hoverCursor, ref n);
+		}
+
+		protected virtual void GeneratePosition(CanvasExporterUtils.AlignmentHorizontal horizontal, CanvasExporterUtils.AlignmentVertical vertical, ref string n)
 		{
 			Vector2 swapVector;
-			var target = u.GetComponent<RectTransform>();
-			if (u.transform.parent.CompareTag("DontRender"))
-				target = u.transform.parent.GetComponent<RectTransform>();
-
-
-			Debug.Log(u.name + " : " + target.position);
-			Debug.Log(u.name + " : " + target.pivot);
-			Debug.Log(u.name + " : " + target.offsetMin);
-			Debug.Log(u.name + " : " + target.offsetMax);
-			Debug.Log(u.name + " : " + target);
-			Debug.Log(u.name + " : " + target.localPosition);
-			Debug.Log(u.name + " : " + target.rect.left);
-			Debug.Log(u.name + " : " + target.rect.right);
-			Debug.Log(u.name + " : " + target.rect.top);
-			Debug.Log(u.name + " : " + target.rect.bottom);
-			Debug.Log(u.name + " : " + target.rect);
-			Debug.Log(u.name + " : " + target.anchoredPosition);
-			Debug.Log(u.name + " : " + target.rect.center);
-			Debug.Log(u.name + " : " + target.rect.position);
-			Debug.Log(u.name + " : " + target.rect.y);
-			Debug.Log(u.name + " : " + target.rect.x);
-			Debug.Log(u.name + " : " + target.transform.position);
+			var target = rectTransform;
+			if (gameObject.transform.parent.CompareTag("DontRender"))
+				target = gameObject.transform.parent.GetComponent<RectTransform>();
 			swapVector = CanvasExporterUtils.SwapSignPosition(target.anchoredPosition);
 
 			var valx = swapVector.x / canvas.pixelRect.size.x * 100f;
@@ -112,7 +215,7 @@ namespace PROJECT
 			}
 			else if (vertical != CanvasExporterUtils.AlignmentVertical.STRETCH)
 			{
-				float cal = swapVector.y >= 0 ? swapVector.y - (target.rect.height / 2) : swapVector.y + (target.rect.height / 2);
+				var cal = swapVector.y >= 0 ? swapVector.y - target.rect.height / 2 : swapVector.y + target.rect.height / 2;
 				BabylonUtils.CreateCodeProperty(varName, "top", cal, BabylonUtils.Unit.PIXEL, ref n);
 				BabylonUtils.CreateCodeProperty(varName, "verticalAlignment", $"BABYLON.GUI.Control.VERTICAL_ALIGNMENT_{vertical}", false, ref n);
 			}
@@ -127,9 +230,9 @@ namespace PROJECT
 				BabylonUtils.CreateCodeProperty(varName, "left", swapVector.x, BabylonUtils.Unit.PIXEL, ref n);
 				BabylonUtils.CreateCodeProperty(varName, "horizontalAlignment", $"BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_{horizontal}", false, ref n);
 			}
-			else if (horizontal != CanvasExporterUtils.AlignmentHorizontal.STRETCH) // LEFT & RIGHT
+			else if (horizontal != CanvasExporterUtils.AlignmentHorizontal.STRETCH)
 			{
-				float cal = swapVector.x >= 0 ? swapVector.x - (target.rect.width / 2) : swapVector.x + (target.rect.width / 2);
+				var cal = swapVector.x >= 0 ? swapVector.x - target.rect.width / 2 : swapVector.x + target.rect.width / 2;
 				BabylonUtils.CreateCodeProperty(varName, "left", cal, BabylonUtils.Unit.PIXEL, ref n);
 				BabylonUtils.CreateCodeProperty(varName, "horizontalAlignment", $"BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_{horizontal}", false, ref n);
 			}

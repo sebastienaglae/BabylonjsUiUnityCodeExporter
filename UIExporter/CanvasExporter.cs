@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using static PROJECT.CanvasExporterUtils;
 
@@ -56,43 +57,44 @@ namespace PROJECT
 			canvas = GetComponent<Canvas>();
 			babylonUiElements ??= new List<BabylonUI>();
 			sceneUiGameObjects ??= new List<GameObject>();
+			sceneControlsTypeDetected ??= new List<Control>();
 			sceneUiGameObjects.Clear();
 			babylonUiElements.Clear();
 			sceneControlsTypeDetected.Clear();
 
 			IBabylonParser[] babylonParsers =
 			{
-				new BabylonInputTextParser(),
+				new BabylonContainerParser(),
 				new BabylonRectangleParser(),
-				new BabylonTextParser(),
+				new BabylonButtonParser(),
 				new BabylonImageParser(),
-				new BabylonScrollViewParser()
+				new BabylonTextParser()
 			};
-
-			var uiId = 0;
-			var adapters = canvas.GetComponentsInChildren<IAdapter>(true);
-			if (adapters == null)
-				return false;
-
-			foreach (var sceneUi in adapters)
+			var zIndex = CreateHierarchicalStructure(canvas);
+			var controlAdapters = new List<ControlAdapter>(canvas.GetComponentsInChildren<ControlAdapter>(true));
+			controlAdapters.Sort();
+			foreach (var uiGameObject in controlAdapters.Select(sceneUi => sceneUi.gameObject))
 			{
-				var uiGameObject = sceneUi.GetGameObject();
 				foreach (var babylonParser in babylonParsers)
 				{
 					if (!babylonParser.CanParse(uiGameObject)) continue;
-					var varName = $"element_{uiId}";
-					var babylonUI = babylonParser.Parse(uiName, uiGameObject, varName, canvas);
+					var uniqueID = GetUniqueNonNumberId();
+
+					if (isEmptyNullWhiteSpace(uiGameObject.GetComponent<ControlAdapter>().uniqueID))
+						uiGameObject.GetComponent<ControlAdapter>().uniqueID = uniqueID;
+					else
+						uniqueID = uiGameObject.GetComponent<ControlAdapter>().uniqueID;
+					var babylonUI = babylonParser.Parse(uiName, uiGameObject, uniqueID, zIndex[uiGameObject], canvas);
 					sceneControlsTypeDetected.Add(babylonUI.GetControl());
 					sceneUiGameObjects.Add(babylonUI.GetGameObject());
 					babylonUiElements.Add(babylonUI);
-					uiId++;
 					break;
 				}
 			}
 
 			return true;
 		}
-	}
 
-	#endregion
+		#endregion
+	}
 }

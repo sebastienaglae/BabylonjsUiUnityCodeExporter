@@ -1,19 +1,20 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace PROJECT
 {
-    public class BabylonImageParser : IBabylonParser
-    {
-	    public bool CanParse(GameObject gameObject)
-	    {
-		    return gameObject.GetComponent<ImageAdapter>() != null;
-	    }
+	public class BabylonImageParser : IBabylonParser
+	{
+		public bool CanParse(GameObject gameObject)
+		{
+			var imageAdapter = gameObject.GetComponent<ImageAdapter>();
+			if (imageAdapter == null) return false;
+			return !imageAdapter.GetType().IsSubclassOf(typeof(ImageAdapter));
+		}
 
-	    public BabylonUI Parse(string uiName, GameObject gameObject, string varName, Canvas canvas)
-	    {
-		    return new BabylonImage(uiName, gameObject, varName, canvas);
-	    }
-    }
+		public BabylonUI Parse(string uiName, GameObject gameObject, string varName,int zIndex, Canvas canvas)
+		{
+			return new BabylonImage(uiName, gameObject, varName,  zIndex, canvas);
+		}
+	}
+
 }
