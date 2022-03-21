@@ -1,0 +1,17 @@
+/*
+    Auto-generated
+*/
+module PROJECT {
+    export class <[({classname})]> {
+<[({vardecl})]>
+		constructor() {
+<[({vardeclvalue})]>
+        }
+
+        public create(): void {
+<[({value})]>
+        }
+
+<[({getter})]>
+    }
+}

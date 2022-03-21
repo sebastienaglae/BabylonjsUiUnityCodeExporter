@@ -91,9 +91,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   uniqueID: 
   hierchicalLevel: 0
-  alignmentHorizontal: 1000
-  alignmentVertical: 1000
-  zIndex: 0
+  alignmentHorizontal: 0
+  alignmentVertical: 0
   hoverCursor: 0
   isFocusInvisible: 0
   color: {r: 1, g: 1, b: 1, a: 1}

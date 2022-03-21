@@ -88,16 +88,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a797c1b39b10c5547a9971f7fcc32c47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  borderColor: {r: 1, g: 1, b: 1, a: 1}
-  borderRadius: 0
-  borderThickness: 0
-  shadowColor: {r: 1, g: 1, b: 1, a: 1}
-  shadowOffset: {x: 0, y: 0}
-  shadowBlur: 0
-  cursor: 0
-  h: 0
-  v: 0
   parent: {fileID: 0}
+  uniqueID: 
+  hierchicalLevel: 0
+  alignmentHorizontal: 0
+  alignmentVertical: 0
+  hoverCursor: 0
+  isFocusInvisible: 0
+  color: {r: 1, g: 1, b: 1, a: 1}
+  alpha: 1
+  disabledColor: {r: 1, g: 1, b: 1, a: 1}
+  disabledColorItem: {r: 1, g: 1, b: 1, a: 1}
+  highlightColor: {r: 1, g: 1, b: 1, a: 1}
+  highlightLineWidth: 0
+  isHighlighted: 0
+  linkOffsetX: 0
+  linkOffsetY: 0
+  paddingTop: 0
+  paddingBottom: 0
+  paddingLeft: 0
+  paddingRight: 0
+  shadowBlur: 0
+  shadowColor: {r: 1, g: 1, b: 1, a: 1}
+  shadowOffsetX: 0
+  shadowOffsetY: 0
+  adaptHeightToChildren: 0
+  adaptWidthToChildren: 0
+  cornerRadius: 0
+  thickness: 0
 --- !u!1 &4789429718487692106
 GameObject:
   m_ObjectHideFlags: 0
@@ -186,16 +204,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a797c1b39b10c5547a9971f7fcc32c47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  borderColor: {r: 1, g: 1, b: 1, a: 1}
-  borderRadius: 0
-  borderThickness: 0
-  shadowColor: {r: 1, g: 1, b: 1, a: 1}
-  shadowOffset: {x: 0, y: 0}
-  shadowBlur: 0
-  cursor: 0
-  h: 0
-  v: 0
   parent: {fileID: 0}
+  uniqueID: 
+  hierchicalLevel: 0
+  alignmentHorizontal: 0
+  alignmentVertical: 0
+  hoverCursor: 0
+  isFocusInvisible: 0
+  color: {r: 1, g: 1, b: 1, a: 1}
+  alpha: 1
+  disabledColor: {r: 1, g: 1, b: 1, a: 1}
+  disabledColorItem: {r: 1, g: 1, b: 1, a: 1}
+  highlightColor: {r: 1, g: 1, b: 1, a: 1}
+  highlightLineWidth: 0
+  isHighlighted: 0
+  linkOffsetX: 0
+  linkOffsetY: 0
+  paddingTop: 0
+  paddingBottom: 0
+  paddingLeft: 0
+  paddingRight: 0
+  shadowBlur: 0
+  shadowColor: {r: 1, g: 1, b: 1, a: 1}
+  shadowOffsetX: 0
+  shadowOffsetY: 0
+  adaptHeightToChildren: 0
+  adaptWidthToChildren: 0
+  cornerRadius: 0
+  thickness: 0
 --- !u!1 &4789429718714081832
 GameObject:
   m_ObjectHideFlags: 0
@@ -284,16 +320,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a797c1b39b10c5547a9971f7fcc32c47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  borderColor: {r: 1, g: 1, b: 1, a: 1}
-  borderRadius: 0
-  borderThickness: 0
-  shadowColor: {r: 1, g: 1, b: 1, a: 1}
-  shadowOffset: {x: 0, y: 0}
-  shadowBlur: 0
-  cursor: 0
-  h: 0
-  v: 0
   parent: {fileID: 0}
+  uniqueID: 
+  hierchicalLevel: 0
+  alignmentHorizontal: 0
+  alignmentVertical: 0
+  hoverCursor: 0
+  isFocusInvisible: 0
+  color: {r: 1, g: 1, b: 1, a: 1}
+  alpha: 1
+  disabledColor: {r: 1, g: 1, b: 1, a: 1}
+  disabledColorItem: {r: 1, g: 1, b: 1, a: 1}
+  highlightColor: {r: 1, g: 1, b: 1, a: 1}
+  highlightLineWidth: 0
+  isHighlighted: 0
+  linkOffsetX: 0
+  linkOffsetY: 0
+  paddingTop: 0
+  paddingBottom: 0
+  paddingLeft: 0
+  paddingRight: 0
+  shadowBlur: 0
+  shadowColor: {r: 1, g: 1, b: 1, a: 1}
+  shadowOffsetX: 0
+  shadowOffsetY: 0
+  adaptHeightToChildren: 0
+  adaptWidthToChildren: 0
+  cornerRadius: 0
+  thickness: 0
 --- !u!1 &4789429719292878334
 GameObject:
   m_ObjectHideFlags: 0
@@ -382,16 +436,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a797c1b39b10c5547a9971f7fcc32c47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  borderColor: {r: 1, g: 1, b: 1, a: 1}
-  borderRadius: 0
-  borderThickness: 0
-  shadowColor: {r: 1, g: 1, b: 1, a: 1}
-  shadowOffset: {x: 0, y: 0}
-  shadowBlur: 0
-  cursor: 0
-  h: 0
-  v: 0
   parent: {fileID: 0}
+  uniqueID: 
+  hierchicalLevel: 0
+  alignmentHorizontal: 0
+  alignmentVertical: 0
+  hoverCursor: 0
+  isFocusInvisible: 0
+  color: {r: 1, g: 1, b: 1, a: 1}
+  alpha: 1
+  disabledColor: {r: 1, g: 1, b: 1, a: 1}
+  disabledColorItem: {r: 1, g: 1, b: 1, a: 1}
+  highlightColor: {r: 1, g: 1, b: 1, a: 1}
+  highlightLineWidth: 0
+  isHighlighted: 0
+  linkOffsetX: 0
+  linkOffsetY: 0
+  paddingTop: 0
+  paddingBottom: 0
+  paddingLeft: 0
+  paddingRight: 0
+  shadowBlur: 0
+  shadowColor: {r: 1, g: 1, b: 1, a: 1}
+  shadowOffsetX: 0
+  shadowOffsetY: 0
+  adaptHeightToChildren: 0
+  adaptWidthToChildren: 0
+  cornerRadius: 0
+  thickness: 0
 --- !u!1 &4789429719715188425
 GameObject:
   m_ObjectHideFlags: 0
@@ -480,16 +552,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a797c1b39b10c5547a9971f7fcc32c47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  borderColor: {r: 1, g: 1, b: 1, a: 1}
-  borderRadius: 0
-  borderThickness: 0
-  shadowColor: {r: 1, g: 1, b: 1, a: 1}
-  shadowOffset: {x: 0, y: 0}
-  shadowBlur: 0
-  cursor: 0
-  h: 0
-  v: 0
   parent: {fileID: 0}
+  uniqueID: 
+  hierchicalLevel: 0
+  alignmentHorizontal: 0
+  alignmentVertical: 0
+  hoverCursor: 0
+  isFocusInvisible: 0
+  color: {r: 1, g: 1, b: 1, a: 1}
+  alpha: 1
+  disabledColor: {r: 1, g: 1, b: 1, a: 1}
+  disabledColorItem: {r: 1, g: 1, b: 1, a: 1}
+  highlightColor: {r: 1, g: 1, b: 1, a: 1}
+  highlightLineWidth: 0
+  isHighlighted: 0
+  linkOffsetX: 0
+  linkOffsetY: 0
+  paddingTop: 0
+  paddingBottom: 0
+  paddingLeft: 0
+  paddingRight: 0
+  shadowBlur: 0
+  shadowColor: {r: 1, g: 1, b: 1, a: 1}
+  shadowOffsetX: 0
+  shadowOffsetY: 0
+  adaptHeightToChildren: 0
+  adaptWidthToChildren: 0
+  cornerRadius: 0
+  thickness: 0
 --- !u!1 &4789429719901221572
 GameObject:
   m_ObjectHideFlags: 0
@@ -583,13 +673,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a797c1b39b10c5547a9971f7fcc32c47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  borderColor: {r: 1, g: 1, b: 1, a: 1}
-  borderRadius: 0
-  borderThickness: 0
-  shadowColor: {r: 1, g: 1, b: 1, a: 1}
-  shadowOffset: {x: 0, y: 0}
-  shadowBlur: 0
-  cursor: 0
-  h: 0
-  v: 0
   parent: {fileID: 0}
+  uniqueID: 
+  hierchicalLevel: 0
+  alignmentHorizontal: 0
+  alignmentVertical: 0
+  hoverCursor: 0
+  isFocusInvisible: 0
+  color: {r: 1, g: 1, b: 1, a: 1}
+  alpha: 1
+  disabledColor: {r: 1, g: 1, b: 1, a: 1}
+  disabledColorItem: {r: 1, g: 1, b: 1, a: 1}
+  highlightColor: {r: 1, g: 1, b: 1, a: 1}
+  highlightLineWidth: 0
+  isHighlighted: 0
+  linkOffsetX: 0
+  linkOffsetY: 0
+  paddingTop: 0
+  paddingBottom: 0
+  paddingLeft: 0
+  paddingRight: 0
+  shadowBlur: 0
+  shadowColor: {r: 1, g: 1, b: 1, a: 1}
+  shadowOffsetX: 0
+  shadowOffsetY: 0
+  adaptHeightToChildren: 0
+  adaptWidthToChildren: 0
+  cornerRadius: 0
+  thickness: 0

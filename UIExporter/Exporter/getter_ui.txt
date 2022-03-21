@@ -1,0 +1,3 @@
+        public get<[({varnameconv})]>() : <[({vartype})]> {
+            return this.<[({varname})]>;
+        }

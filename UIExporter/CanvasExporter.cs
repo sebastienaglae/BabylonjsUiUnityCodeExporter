@@ -1,100 +1,122 @@
 using System.Collections.Generic;
 using System.Linq;
+using UnityEditor;
 using UnityEngine;
 using static PROJECT.CanvasExporterUtils;
 
 namespace PROJECT
 {
-	[RequireComponent(typeof(Canvas))]
-	public class CanvasExporter : MonoBehaviour
-	{
-		#region Generation
+    [RequireComponent(typeof(Canvas))]
+    public class CanvasExporter : MonoBehaviour
+    {
+        private const string UiFolderPath = "Assets/Content/Custom/Ui";
 
-		public void GenerateUi()
-		{
-			var n = "";
-			GenerateCreateUi(uiName, ref n);
-			GenerateIdealSize(uiName, canvas.gameObject, ref n);
+        #region Generation
 
-			foreach (var t in babylonUiElements) t.Generate(ref n);
+        public void GenerateClassCode(bool createFile)
+        {
+            var n = "";
+            GenerateIdealSize(uiName, canvas.gameObject, ref n);
+            var uiClassCreator = new UiClassCreator(GenerateCreateUi(uiName), uiName, n);
 
-			GUIUtility.systemCopyBuffer = n;
-		}
+            foreach (var t in _babylonUiElements)
+            {
+                uiClassCreator.Add(t.Generate());
+            }
 
-		#endregion
+            if (createFile)
+            {
+                var fileName = uiClassCreator.GetClassName() + ".ts";
+                CreateFile(UiFolderPath + "/" + fileName, uiClassCreator.ToString());
+                AssetDatabase.Refresh();
+            }
+            else
+            {
+                GUIUtility.systemCopyBuffer = uiClassCreator.ToString();
+            }
+        }
 
-		#region Variable
+        #endregion
 
-		public string uiName = "advancedTexture";
+        #region Variable
 
-		[NonReorderable]
-		[ReadOnly]
-		public List<GameObject> sceneUiGameObjects;
-		[NonReorderable]
-		[ReadOnly]
-		public List<Control> sceneControlsTypeDetected;
-		[ReadOnly]
-		public Canvas canvas;
+        public string uiName = "advancedTexture";
 
-		private List<BabylonUI> babylonUiElements;
+        [NonReorderable] [ReadOnly] public List<GameObject> sceneUiGameObjects;
+        [NonReorderable] [ReadOnly] public List<Control> sceneControlsTypeDetected;
+        [ReadOnly] public Canvas canvas;
 
-		#endregion
+        private List<IBabylonUI> _babylonUiElements;
 
-		#region GenerateProperties
+        #endregion
 
-		#endregion
+        #region GenerateProperties
 
-		#region Utils
+        #endregion
 
-		public bool GetUiElement()
-		{
-			if (string.IsNullOrWhiteSpace(uiName))
-			{
-				Debug.LogWarning("The ui name is missing !");
-				return false;
-			}
+        #region Utils
 
-			canvas = GetComponent<Canvas>();
-			babylonUiElements ??= new List<BabylonUI>();
-			sceneUiGameObjects ??= new List<GameObject>();
-			sceneControlsTypeDetected ??= new List<Control>();
-			sceneUiGameObjects.Clear();
-			babylonUiElements.Clear();
-			sceneControlsTypeDetected.Clear();
+        public bool GetUiElement()
+        {
+            if (string.IsNullOrWhiteSpace(uiName))
+            {
+                Debug.LogWarning("The ui name is missing !");
+                return false;
+            }
 
-			IBabylonParser[] babylonParsers =
-			{
-				new BabylonContainerParser(),
-				new BabylonRectangleParser(),
-				new BabylonButtonParser(),
-				new BabylonImageParser(),
-				new BabylonTextParser()
-			};
-			var zIndex = CreateHierarchicalStructure(canvas);
-			var controlAdapters = new List<ControlAdapter>(canvas.GetComponentsInChildren<ControlAdapter>(true));
-			controlAdapters.Sort();
-			foreach (var uiGameObject in controlAdapters.Select(sceneUi => sceneUi.gameObject))
-			{
-				foreach (var babylonParser in babylonParsers)
-				{
-					if (!babylonParser.CanParse(uiGameObject)) continue;
-					var uniqueID = GetUniqueNonNumberId();
+            canvas = GetComponent<Canvas>();
+            _babylonUiElements ??= new List<IBabylonUI>();
+            sceneUiGameObjects ??= new List<GameObject>();
+            sceneControlsTypeDetected ??= new List<Control>();
+            sceneUiGameObjects.Clear();
+            _babylonUiElements.Clear();
+            sceneControlsTypeDetected.Clear();
 
-					if (isEmptyNullWhiteSpace(uiGameObject.GetComponent<ControlAdapter>().uniqueID))
-						uiGameObject.GetComponent<ControlAdapter>().uniqueID = uniqueID;
-					else
-						uniqueID = uiGameObject.GetComponent<ControlAdapter>().uniqueID;
-					var babylonUI = babylonParser.Parse(uiName, uiGameObject, uniqueID, zIndex[uiGameObject], canvas);
-					sceneControlsTypeDetected.Add(babylonUI.GetControl());
-					sceneUiGameObjects.Add(babylonUI.GetGameObject());
-					babylonUiElements.Add(babylonUI);
-					break;
-				}
-			}
+            IBabylonParser[] babylonParsers =
+            {
+                new BabylonContainerParser(),
+                new BabylonRectangleParser(),
+                new BabylonButtonParser(),
+                new BabylonImageParser(),
+                new BabylonTextParser(),
+                new BabylonInputTextParser(),
+                new BabylonScrollViewerParser()
+            };
+            var zIndex = CreateHierarchicalStructure(canvas);
+            var existingIds = new List<string>();
+            var controlAdapters = new List<ControlAdapter>(canvas.GetComponentsInChildren<ControlAdapter>(true));
+            controlAdapters.Sort();
+            foreach (var uiGameObject in controlAdapters.Select(sceneUi => sceneUi.gameObject))
+            {
+                foreach (var babylonParser in babylonParsers)
+                {
+                    if (!babylonParser.CanParse(uiGameObject)) continue;
+                    var uniqueID = GetUniqueNonNumberId();
+                    var actualID = uiGameObject.GetComponent<ControlAdapter>().uniqueID;
+                    if (existingIds.Contains(actualID))
+                    {
+                        GameObject[] objs = {uiGameObject};
+                        Selection.objects = objs;
+                        Debug.LogError("There multiple unique id !");
+                        return false;
+                    }
 
-			return true;
-		}
+                    if (isEmptyNullWhiteSpace(actualID))
+                        uiGameObject.GetComponent<ControlAdapter>().uniqueID = uniqueID;
+                    else
+                        uniqueID = uiGameObject.GetComponent<ControlAdapter>().uniqueID;
+                    existingIds.Add(uniqueID);
+                    var babylonUI = babylonParser.Parse(uiName, uiGameObject, uniqueID, zIndex[uiGameObject], canvas);
+                    sceneControlsTypeDetected.Add(babylonUI.GetControl());
+                    sceneUiGameObjects.Add(babylonUI.GetGameObject());
+                    _babylonUiElements.Add(babylonUI);
+                    break;
+                }
+            }
 
-		#endregion
-	}
+            return true;
+        }
+
+        #endregion
+    }
 }

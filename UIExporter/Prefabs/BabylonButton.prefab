@@ -135,10 +135,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parent: {fileID: 0}
-  uniqueID: DCHBAJJBAECfEGAfbbdcAcJHFDFJCcEb
+  uniqueID: 
   hierchicalLevel: 0
-  alignmentHorizontal: 50
-  alignmentVertical: 50
+  alignmentHorizontal: 0
+  alignmentVertical: 0
   hoverCursor: 0
   isFocusInvisible: 0
   color: {r: 1, g: 1, b: 1, a: 1}
@@ -162,6 +162,7 @@ MonoBehaviour:
   adaptWidthToChildren: 0
   cornerRadius: 0
   thickness: 0
+  fontFamily: arial
   imageUrl: 
   iconButton: 0
 --- !u!1 &7267688382451263492
